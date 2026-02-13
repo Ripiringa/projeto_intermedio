@@ -1,0 +1,8 @@
+body{
+    background-color:rgb(50%, 75%, 25%);
+}
+
+header img {
+    float: right;
+    width: 35%;
+}
