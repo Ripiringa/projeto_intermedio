@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <title>jogo da sorte</title>
+</head>
+
+<body>
+    <h2>jogo da sorte</h2>
+    <!-- Adicionei id ao input para pegar o valor -->
+    <input type="number" id="adivinha" min="1" max="100" onchange="verificar()"/>
+    <!-- Botão chama a função verificar -->
+    <button onclick="window.location.reload()">Reset</button>
+    <button onclick="verificar()">OK</button>
+    <p id="resposta"></p>
+    <img id="maior" src="maior.jpeg" />
+    <img id="menor" src="menor.jpeg" />
+    <img id="acertaste" src="acertaste.jpg" />
+
+    <script>
+        // Número aleatório entre 0 e 100
+        let n_sorte = Math.round(Math.random() * 100);
+        console.log("Número secreto:", n_sorte);
+
+
+        function verificar(){
+            // pega o valor do input e transforma em número
+            let n_escolhido = Number(document.getElementById("adivinha").value);
+            let resposta = document.getElementById("resposta");
+
+            // compara número digitado com o número secreto
+            if (n_sorte == n_escolhido) {
+                resposta.textContent = "Parabéns acabou de desperdissar parte do seu tempo de vida . Obrigado!";
+                document.getElementById("acertaste").style.display = "block";
+                document.getElementById("maior").style.display = "none";
+                document.getElementById("menor").style.display = "none";
+            } else if (n_escolhido < n_sorte) {
+                resposta.textContent = " O número é maior! 👀";
+                document.getElementById("maior").style.display = "block";
+                document.getElementById("acertaste").style.display = "none";
+                document.getElementById("menor").style.display = "none";
+            } else if (n_escolhido > n_sorte) {
+                resposta.textContent = " O número é menor! 👍";
+                document.getElementById("menor").style.display = "block";
+                document.getElementById("acertaste").style.display = "none";
+                document.getElementById("maior").style.display = "none";
+                
+                
+            }
+
+        }
+    </script>
+    <style>
+        img {
+            width: 5em;
+            display: none;
+        }
+    </style>
+</body>
+</html>
