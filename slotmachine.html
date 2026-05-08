@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adivinha</title>
+    </head>
+<body>
+    <h1>Lucky you</h1>
+    <button onclick="tryLuck()">Try My Luck</button>
+    <button onclick="stop()">STOP!</button>
+
+    <p>
+        <span id="dn1" class="bignumber"></span>
+        <span id="dn2" class="bignumber"></span>
+        <span id="dn3" class="bignumber"></span>
+    </p>
+
+    <script>
+        const dn1 = document.getElementById("dn1")
+        const dn2 = document.getElementById("dn2")
+        const dn3 = document.getElementById("dn3")
+        let myTimer
+        let timeout = 0
+
+        function tryLuck() {
+            const n1 = Math.round(Math.random() * 9)
+            const n2 = Math.round(Math.random() * 9)
+            const n3 = Math.round(Math.random() * 9)
+            dn1.innerHTML = n1
+            dn2.innerHTML = n2
+            dn3.innerHTML = n3
+            timeout = timeout + 25
+            if(timeout < 500) {
+                myTimer = setTimeout(tryLuck, timeout)
+            } else {
+                stop()
+            }
+        }
+
+        function stop() {
+            clearTimeout(myTimer)
+            timeout = 0
+        }
+    </script>
+    <style>
+    .bignumber {
+        font-family: "digital-clock-font";
+        font-size: xx-large;
+        letter-spacing: lem;
+    }
+
+    @font-face {
+        font-family: "digital-clock-font";
+        src: url("digital-7-mono.ttf");
+     }
+    </style>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
