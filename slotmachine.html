@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Adivinha</title>
-    </head>
+
+<head>
+    <title>Adivinha</title>
+</head>
+
 <body>
     <h2><a href="index.html">Spawn inicial</a></h2>
     <h1>Lucky you</h1>
+
     <button onclick="tryLuck()">Try My Luck</button>
     <button onclick="stop()">STOP!</button>
 
@@ -15,22 +18,32 @@
         <span id="dn3" class="bignumber"></span>
     </p>
 
+    <p id="msgPerdeu">
+        PERDEU!!!
+    </p>
+    <p id="msgGanhou">
+        GANHOU!!!
+    </p>
+
     <script>
         const dn1 = document.getElementById("dn1")
         const dn2 = document.getElementById("dn2")
         const dn3 = document.getElementById("dn3")
         let myTimer
         let timeout = 0
+        let n1, n2, n3 = -1
 
         function tryLuck() {
-            const n1 = Math.round(Math.random() * 9)
-            const n2 = Math.round(Math.random() * 9)
-            const n3 = Math.round(Math.random() * 9)
+            document.getElementById("msgPerdeu").style.display = "none"
+            document.getElementById("msgGanhou").style.display = "none"
+            n1 = Math.round(Math.random() * 9)
+            n2 = Math.round(Math.random() * 9)
+            n3 = Math.round(Math.random() * 9)
             dn1.innerHTML = n1
             dn2.innerHTML = n2
             dn3.innerHTML = n3
-            timeout = timeout + 25
-            if(timeout < 500) {
+            timeout = timeout + 75
+            if (timeout < 500) {
                 myTimer = setTimeout(tryLuck, timeout)
             } else {
                 stop()
@@ -38,71 +51,37 @@
         }
 
         function stop() {
+            const resultado = (n1 === n2 === n3)
+            if (resultado) {
+                document.getElementById("msgGanhou").style.display = "block"
+                document.getElementById("msgPerdeu").style.display = "none"
+
+            } else {
+                document.getElementById("msgPerdeu").style.display = "block"
+                document.getElementById("msgGanhou").style.display = "none"
+            }
             clearTimeout(myTimer)
             timeout = 0
         }
     </script>
-    <style>
-    .bignumber {
-        font-family: "digital-clock-font";
-        font-size: xx-large;
-        letter-spacing: lem;
-    }
 
-    @font-face {
-        font-family: "digital-clock-font";
-        src: url("digital-7-mono.ttf");
-     }
+    <style>
+        .bignumber {
+            font-family: "digital-clock-font";
+            font-size: xx-large;
+            letter-spacing: lem;
+        }
+
+        p#msgPerdeu,
+        p#msgGanhou {
+            display: none;
+        }
+
+        @font-face {
+            font-family: "digital-clock-font";
+            src: url("digital-7-mono.ttf");
+        }
     </style>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
