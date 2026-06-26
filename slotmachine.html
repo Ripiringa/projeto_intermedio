@@ -42,7 +42,7 @@
             dn1.innerHTML = n1
             dn2.innerHTML = n2
             dn3.innerHTML = n3
-            timeout = timeout + 75
+            timeout = timeout + 10
             if (timeout < 500) {
                 myTimer = setTimeout(tryLuck, timeout)
             } else {
@@ -51,7 +51,7 @@
         }
 
         function stop() {
-            const resultado = (n1 === n2 === n3)
+            const resultado = (n1 === n2 && n2 === n3)
             if (resultado) {
                 document.getElementById("msgGanhou").style.display = "block"
                 document.getElementById("msgPerdeu").style.display = "none"
